@@ -36,36 +36,36 @@ ask = input(ORANGE + "1. Do you wanna paste just a link?\nor\n2. Just put a link
 ask = ask.lower()
 
 # Input statement
-if ask == '1' or ask == 'link':
+if ask in ['1', 'link']:
   input1 = input("Enter the site link you wanna proceed to:- ")
   input1 = input1.lower()
 
 
   # Driver get
   driver = webdriver.Firefox()
-  driver.get("{}".format(input1))
+  driver.get(f"{input1}")
 
 # CSS.
-  CSS = WebDriverWait(driver, 60).until(
-    WS.presence_of_element_located((By.CSS_SELECTOR, ".run-icon-svg"))
-)
+    CSS = WebDriverWait(driver, 60).until(
+      WS.presence_of_element_located((By.CSS_SELECTOR, ".run-icon-svg"))
+  )
 
-elif ask == '2' or ask == 'name':
+elif ask in ['2', 'name']:
   input1 = input("Enter the site name you wanna proceed to:- ")
   input1 = input1.lower()
 
 
   # Driver get
   driver = webdriver.Firefox()
-  driver.get("https://{}.com".format(input1))
+  driver.get(f"https://{input1}.com")
 
 # CSS.
-  CSS = WebDriverWait(driver, 60).until(
-    WS.presence_of_element_located((By.CSS_SELECTOR, ".run-icon-svg")) 
-)
+    CSS = WebDriverWait(driver, 60).until(
+      WS.presence_of_element_located((By.CSS_SELECTOR, ".run-icon-svg")) 
+  )
 
 else:
-  print(RED + "Not really found!!" + END)
+  print(f"{RED}Not really found!!{END}")
 
 # Making the run clickable
 CSS.click()
